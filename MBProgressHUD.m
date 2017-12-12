@@ -95,6 +95,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     _margin = 20.0f;
     _opacity = 1.f;
     _defaultMotionEffectsEnabled = YES;
+    _progressSize = 37;
 
     // Default color, depending on the current iOS version
     BOOL isLegacy = kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_7_0;
@@ -405,6 +406,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
             [self.bezelView addSubview:indicator];
         }
         if (mode == MBProgressHUDModeAnnularDeterminate) {
+            ((MBRoundProgressView *)indicator).size = self.progressSize;
             [(MBRoundProgressView *)indicator setAnnular:YES];
         }
     } 
@@ -832,6 +834,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
+        _size = frame.size.width;
         _progress = 0.f;
         _annular = NO;
         _progressTintColor = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
@@ -843,7 +846,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 #pragma mark - Layout
 
 - (CGSize)intrinsicContentSize {
-    return CGSizeMake(37.f, 37.f);
+    return CGSizeMake(self.size, self.size);
 }
 
 #pragma mark - Properties

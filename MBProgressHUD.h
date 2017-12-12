@@ -262,6 +262,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0.
  */
 @property (assign, nonatomic) float progress;
+@property (assign, nonatomic) CGFloat progressSize;
 
 /// @name ProgressObject
 
@@ -346,6 +347,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Display mode - NO = round or YES = annular. Defaults to round.
  */
 @property (nonatomic, assign, getter = isAnnular) BOOL annular;
+@property (nonatomic, assign) CGFloat size;
 
 @end
 

@@ -173,9 +173,18 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 
     // Set the annular determinate mode to show task progress.
+    hud.progressSize = 137;
     hud.mode = MBProgressHUDModeAnnularDeterminate;
     hud.label.text = NSLocalizedString(@"Loading...", @"HUD loading title");
-
+    hud.contentColor = UIColor.redColor;
+    hud.label.textColor = UIColor.blackColor;
+    
+    UILabel *progressLabel = [[UILabel alloc] init];
+    progressLabel.font = [UIFont systemFontOfSize:12];
+    progressLabel.text = @"0%";
+    progressLabel.textColor = UIColor.redColor;
+    [hud.bezelView addSubview:progressLabel];
+    
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         // Do something useful in the background and update the HUD periodically.
         [self doSomeWorkWithProgress];
